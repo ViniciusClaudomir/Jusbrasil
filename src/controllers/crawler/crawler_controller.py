@@ -2,6 +2,7 @@ from typing import Any
 import requests as r
 from bs4 import BeautifulSoup as bs
 import json
+from src.controllers.helpers.print_console import print_table
 class CrawlerController():
     
 	def __init__(self, crawlerAdapter) -> None:
@@ -26,3 +27,7 @@ class CrawlerController():
 				arq.write(json.dumps(self.dict_page))
 		else:
 			raise Exception("Prefix json error")
+			
+	@property
+	def console(self):
+		print_table(self.dict_page)
