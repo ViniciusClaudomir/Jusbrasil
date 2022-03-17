@@ -2,7 +2,7 @@
 Teste para o processo seletivo da Jusbrasil
 
 
-Dependencias externas:
+Dependências externas:
 
 Parsel:
 
