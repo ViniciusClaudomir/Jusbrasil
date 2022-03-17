@@ -1,7 +1,7 @@
 def print_table(dict_values):
     for tables in dict_values:
         dados = dict_values[tables]
-        titulo = dados['title']
+        titulo = dados['title'].strip()
         for index, row in enumerate(dados['data']):
             if index == 0:
                 header = dados['data'][row].keys()
