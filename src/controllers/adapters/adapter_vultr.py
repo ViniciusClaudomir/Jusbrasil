@@ -1,9 +1,20 @@
 import re
 from bs4 import BeautifulSoup as bs
+import requests as r
+
 
 
 class AdapterVultr():
-    def to_dict(self, page: bs) -> dict:
+    def to_dict(self, url: str) -> dict:
+        '''
+
+            Na pagina da vult, as tabelas da pagina, não seguia aquele padrão de table, tr, td
+            e sim era separado por div's e classes css que fazia a formatação, para isso criei alguns parses 
+            para se basear nessas classes css
+
+        '''
+        response = r.get(url)
+        page = bs(response.text, 'html')
         table = page.find('div', {'id':'optimized-cloud-compute'})
         columns_element = table.find( 'div',{'class':'pt__header'})
         mask = {x.text.strip():'' for x in columns_element.find_all('div', {'class','pt__cell'}) if bool(x.text.strip())}
